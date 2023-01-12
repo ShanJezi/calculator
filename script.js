@@ -11,11 +11,17 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return a - b;
+  return a / b;
 }
 
 function operate(operator, a, b) {
-  if (operator === '+') {
-    return add(a, b);
-  }
-}
+  if (operator === '+') return add(a, b);
+  if (operator === '-') return subtract(a, b);
+  if (operator === '*') return multiply(a, b);
+  if (operator === '/') return divide(a, b);
+};
+
+console.log(operate('+', 2, 3));
+console.log(operate('-', 6, 3));
+console.log(operate('*', 2, 3));
+console.log(operate('/', 6, 3));
