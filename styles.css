@@ -61,7 +61,8 @@ h1 {
 }
 
 .number,
-.operator {
+.operator,
+.del-clr {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,11 +83,22 @@ h1 {
   background-color: rgb(66, 66, 66);
 }
 
+.number-hover {
+  background-color: rgb(80, 80, 80);
+}
+
 .operator {
   background-color: rgb(55, 74, 97);
 }
 
-#delete,
-#clear {
+.operator-hover {
+  background-color: rgb(69, 88, 111);
+}
+
+.del-clr {
   background-color: rgb(136, 73, 73);
+}
+
+.del-clr-hover {
+  background-color: rgb(150, 87, 87);
 }

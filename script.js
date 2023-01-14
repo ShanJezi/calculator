@@ -1,3 +1,7 @@
+const numberBtns = document.querySelectorAll('.number');
+const operatorBtns = document.querySelectorAll('.operator');
+const delClrBtns = document.querySelectorAll('.del-clr');
+
 const sevenBtn = document.getElementById('7');
 const eightBtn = document.getElementById('8');
 const nineBtn = document.getElementById('9');
@@ -18,6 +22,40 @@ const divideBtn = document.getElementById('divide');
 const addBtn = document.getElementById('add');
 const subtractBtn = document.getElementById('subtract');
 const equalsBtn = document.getElementById('equals');
+
+const display = document.querySelector('.display');
+let displayValue = 666;
+
+display.textContent = displayValue;
+
+
+numberBtns.forEach((button) => {
+  button.addEventListener('mouseover', () => {
+    button.classList.add('number-hover');
+  });
+  button.addEventListener('mouseout', () => {
+    button.classList.remove('number-hover');
+  });
+});
+
+operatorBtns.forEach((button) => {
+  button.addEventListener('mouseover', () => {
+    button.classList.add('operator-hover');
+  });
+  button.addEventListener('mouseout', () => {
+    button.classList.remove('operator-hover');
+  });
+});
+
+delClrBtns.forEach((button) => {
+  button.addEventListener('mouseover', () => {
+    button.classList.add('del-clr-hover');
+  });
+  button.addEventListener('mouseout', () => {
+    button.classList.remove('del-clr-hover');
+  });
+});
+
 
 
 function add(a, b) {
