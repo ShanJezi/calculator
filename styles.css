@@ -48,19 +48,19 @@ h1 {
   gap: 14px;
 }
 
-.numbers {
+.left-button-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 12px;
 }
 
-.operators {
+.right-button-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 12px;
 }
 
-.number,
+.left-button,
 .operator,
 .del-clr {
   display: flex;
@@ -79,11 +79,11 @@ h1 {
   grid-column: auto / span 2;
 }
 
-.number {
+.left-button {
   background-color: rgb(66, 66, 66);
 }
 
-.number-hover {
+.left-button-hover {
   background-color: rgb(80, 80, 80);
 }
 

@@ -1,3 +1,4 @@
+const leftBtns = document.querySelectorAll('.left-button');
 const numberBtns = document.querySelectorAll('.number');
 const operatorBtns = document.querySelectorAll('.operator');
 const delClrBtns = document.querySelectorAll('.del-clr');
@@ -27,20 +28,25 @@ const display = document.querySelector('.display');
 let displayValue = '';
 
 
-numberBtns.forEach((button) => {
+leftBtns.forEach((button) => {
   button.addEventListener('mouseover', () => {
-    button.classList.add('number-hover');
+    button.classList.add('left-button-hover');
   });
   button.addEventListener('mouseout', () => {
-    button.classList.remove('number-hover');
+    button.classList.remove('left-button-hover');
   });
+  button.addEventListener('click', () => {
+    button.classList.add('left-button-select');
+  })
+});
+
+numberBtns.forEach((button) => {
   const buttonHandler = () => {
-    button.classList.add('number-select');
     displayValue += button.id;
     display.textContent = displayValue;
   }
   button.addEventListener('click', buttonHandler);
-});
+})
 
 operatorBtns.forEach((button) => {
   button.addEventListener('mouseover', () => {
@@ -59,6 +65,11 @@ delClrBtns.forEach((button) => {
     button.classList.remove('del-clr-hover');
   });
 });
+
+clearBtn.addEventListener('click', () => {
+  displayValue = ''
+  display.textContent = displayValue;
+})
 
 
 
