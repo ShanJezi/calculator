@@ -9,9 +9,34 @@ h1 {
   color: blue;
 }
 
-.display-container {
+.calculator {
+  background-color: rgb(172, 186, 202);
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+
+.display-container {
+  background-color:rgb(236, 236, 236);
+  width: 300px;
+  height: 80px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+}
+
+.display {
+  margin-right: 20px;
+  margin-bottom: 10px;
+  font-size: 40px;
+}
 
 .buttons {
   display: flex;
@@ -38,9 +63,25 @@ h1 {
   width: 50px;
   height: 50px;
   border: 1px solid black;
+  border-radius: 5px;
 }
 
 #equals {
   width: 112px;
   grid-column: auto / span 2;
+}
+
+.number {
+  background-color: rgb(66, 66, 66);
+  color:rgb(236, 236, 236)
+}
+
+.operator {
+  background-color: rgb(55, 74, 97);
+  color:rgb(236, 236, 236)
+}
+
+#delete,
+#clear {
+  background-color: rgb(136, 73, 73);
 }
