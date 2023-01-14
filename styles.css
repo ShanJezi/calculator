@@ -1,3 +1,46 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 h1 {
   color: blue;
+}
+
+.display-container {
+}
+
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.operators {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.number,
+.operator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+#equals {
+  width: 112px;
+  grid-column: auto / span 2;
 }
