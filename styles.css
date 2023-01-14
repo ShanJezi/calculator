@@ -21,15 +21,15 @@ h1 {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 
 .display-container {
   background-color:rgb(236, 236, 236);
-  width: 300px;
+  width: 296px;
   height: 80px;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 8px;
   display: flex;
   align-items: flex-end;
@@ -45,19 +45,19 @@ h1 {
 
 .buttons {
   display: flex;
-  gap: 10px;
+  gap: 14px;
 }
 
 .numbers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  grid-gap: 12px;
 }
 
 .operators {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
+  grid-gap: 12px;
 }
 
 .number,
@@ -66,9 +66,11 @@ h1 {
   align-items: center;
   justify-content: center;
   width: 50px;
-  height: 50px;
-  border: 1px solid black;
+  height: 54px;
+  border: 2px solid black;
   border-radius: 8px;
+  color:rgb(236, 236, 236);
+  font-size: 22px;
 }
 
 #equals {
@@ -78,12 +80,10 @@ h1 {
 
 .number {
   background-color: rgb(66, 66, 66);
-  color:rgb(236, 236, 236)
 }
 
 .operator {
   background-color: rgb(55, 74, 97);
-  color:rgb(236, 236, 236)
 }
 
 #delete,
