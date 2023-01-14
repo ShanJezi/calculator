@@ -11,9 +11,9 @@ const sixBtn = document.getElementById('6');
 const oneBtn = document.getElementById('1');
 const twoBtn = document.getElementById('2');
 const threeBtn = document.getElementById('3');
-const decimalBtn = document.getElementById('decimal');
+const decimalBtn = document.getElementById('.');
 const zeroBtn = document.getElementById('0');
-const posNegBtn = document.getElementById('pos-neg');
+const posNegBtn = document.getElementById('-');
 
 const deleteBtn = document.getElementById('delete');
 const clearBtn = document.getElementById('clear');
@@ -24,9 +24,7 @@ const subtractBtn = document.getElementById('subtract');
 const equalsBtn = document.getElementById('equals');
 
 const display = document.querySelector('.display');
-let displayValue = 666;
-
-display.textContent = displayValue;
+let displayValue = '';
 
 
 numberBtns.forEach((button) => {
@@ -36,6 +34,12 @@ numberBtns.forEach((button) => {
   button.addEventListener('mouseout', () => {
     button.classList.remove('number-hover');
   });
+  const buttonHandler = () => {
+    button.classList.add('number-select');
+    displayValue += button.id;
+    display.textContent = displayValue;
+  }
+  button.addEventListener('click', buttonHandler);
 });
 
 operatorBtns.forEach((button) => {
