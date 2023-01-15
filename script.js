@@ -92,9 +92,20 @@ clearBtn.addEventListener('click', () => {
 });
 
 
+// delete
+deleteBtn.addEventListener('click', () => {
+  displayValue = displayValue.slice(0, displayValue.length - 1);
+  display.textContent = displayValue;
+})
+
+
 // positive/negative
 posNegBtn.addEventListener('click', () => {
-  displayValue = -displayValue;
+  if (displayValue.includes('-')) {
+    displayValue = displayValue.slice(1, displayValue.length);
+  } else {
+    displayValue = '-' + displayValue;
+  }
   display.textContent = displayValue;
 });
 
