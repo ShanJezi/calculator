@@ -28,6 +28,7 @@ const display = document.querySelector('.display');
 let displayValue = '';
 
 
+// change button styling on hover and click
 leftBtns.forEach((button) => {
   button.addEventListener('mouseover', () => {
     button.classList.add('left-button-hover');
@@ -38,16 +39,8 @@ leftBtns.forEach((button) => {
   button.addEventListener('click', () => {
     button.classList.add('left-button-select');
   })
+  //button.addEventListener('transitionend', removeTransition);
 });
-
-numberBtns.forEach((button) => {
-  const buttonHandler = () => {
-    displayValue += button.id;
-    display.textContent = displayValue;
-  }
-  button.addEventListener('click', buttonHandler);
-})
-
 operatorBtns.forEach((button) => {
   button.addEventListener('mouseover', () => {
     button.classList.add('operator-hover');
@@ -55,8 +48,11 @@ operatorBtns.forEach((button) => {
   button.addEventListener('mouseout', () => {
     button.classList.remove('operator-hover');
   });
+  button.addEventListener('click', () => {
+    button.classList.add('operator-select');
+  })
+  //button.addEventListener('transitionend', removeTransition);
 });
-
 delClrBtns.forEach((button) => {
   button.addEventListener('mouseover', () => {
     button.classList.add('del-clr-hover');
@@ -64,10 +60,52 @@ delClrBtns.forEach((button) => {
   button.addEventListener('mouseout', () => {
     button.classList.remove('del-clr-hover');
   });
+  button.addEventListener('click', () => {
+    button.classList.add('del-clr-select');
+  })
+  //button.addEventListener('transitionend', removeTransition);
 });
 
+// remove button select styling
+function removeTransition(e) {
+  if(e.propertyName !== 'transform') return;
+  this.classList.remove('left-button-select');
+  this.classList.remove('operator-select');
+  this.classList.remove('del-clr-select');
+}
+
+
+// number buttons populate display
+numberBtns.forEach((button) => {
+  const buttonHandler = () => {
+    displayValue += button.id;
+    display.textContent = displayValue;
+  }
+  button.addEventListener('click', buttonHandler);
+});
+
+
+// clear display
 clearBtn.addEventListener('click', () => {
   displayValue = ''
+  display.textContent = displayValue;
+});
+
+
+// positive/negative
+posNegBtn.addEventListener('click', () => {
+  displayValue = -displayValue;
+  display.textContent = displayValue;
+});
+
+
+// decimal
+decimalBtn.addEventListener('click', () => {
+  if (displayValue.includes('.')) {
+    displayValue = displayValue;
+  } else {
+    displayValue = displayValue + '.';
+  }
   display.textContent = displayValue;
 })
 
@@ -95,8 +133,3 @@ function operate(operator, a, b) {
   if (operator === '*') return multiply(a, b);
   if (operator === '/') return divide(a, b);
 };
-
-console.log(operate('+', 2, 3));
-console.log(operate('-', 6, 3));
-console.log(operate('*', 2, 3));
-console.log(operate('/', 6, 3));
