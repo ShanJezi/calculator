@@ -137,20 +137,25 @@ decimalBtn.addEventListener('click', () => {
 
 // add
 addBtn.addEventListener('click', () => {
+  if (topDisplayValue && displayValue) {
+    getAnswer();
+  }
   topDisplayValue = displayValue + ' + ';
   displayValue = '0';
   updateDisplay();
 })
 
 
-equalsBtn.addEventListener('click', () => {
+function getAnswer() {
   let topDisplayArray = topDisplayValue.split(' ');
   let operator = topDisplayArray[1];
-  let a = parseInt(topDisplayArray[0]);
-  let b = parseInt(displayValue);
+  let a = parseFloat(topDisplayArray[0]);
+  let b = parseFloat(displayValue);
   operate(operator, a, b);
   updateDisplay();
-})
+}
+
+equalsBtn.addEventListener('click', getAnswer);
 
 
 
