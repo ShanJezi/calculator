@@ -1,4 +1,5 @@
 const leftBtns = document.querySelectorAll('.left-button');
+const rightBtns = document.querySelectorAll('.right-button');
 const numberBtns = document.querySelectorAll('.number');
 const operatorBtns = document.querySelectorAll('.operator');
 const delClrBtns = document.querySelectorAll('.del-clr');
@@ -51,7 +52,7 @@ leftBtns.forEach((button) => {
   })
   //button.addEventListener('transitionend', removeTransition);
 });
-operatorBtns.forEach((button) => {
+rightBtns.forEach((button) => {
   button.addEventListener('mouseover', () => {
     button.classList.add('operator-hover');
   });
@@ -135,15 +136,28 @@ decimalBtn.addEventListener('click', () => {
 })
 
 
+
+operatorBtns.forEach((button) => {
+  button.addEventListener('click', () => {
+    if (topDisplayValue && displayValue) {
+      getAnswer();
+    }
+    topDisplayValue = displayValue + ' ' + button.textContent + ' ';
+    displayValue = '0';
+    updateDisplay();
+  });
+});
+
+
 // add
-addBtn.addEventListener('click', () => {
-  if (topDisplayValue && displayValue) {
-    getAnswer();
-  }
-  topDisplayValue = displayValue + ' + ';
-  displayValue = '0';
-  updateDisplay();
-})
+// addBtn.addEventListener('click', () => {
+//   if (topDisplayValue && displayValue) {
+//     getAnswer();
+//   }
+//   topDisplayValue = displayValue + ' ' + addBtn.textContent + ' ';
+//   displayValue = '0';
+//   updateDisplay();
+// })
 
 
 function getAnswer() {

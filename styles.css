@@ -68,6 +68,7 @@ h1 {
 }
 
 .left-button,
+.right-button,
 .operator,
 .del-clr {
   display: flex;
@@ -94,7 +95,8 @@ h1 {
   background-color: rgb(80, 80, 80);
 }
 
-.operator {
+.operator,
+.right-button {
   background-color: rgb(55, 74, 97);
 }
 
