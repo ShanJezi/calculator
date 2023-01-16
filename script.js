@@ -25,7 +25,17 @@ const subtractBtn = document.getElementById('subtract');
 const equalsBtn = document.getElementById('equals');
 
 const display = document.querySelector('.display');
-let displayValue = '';
+const topDisplay = document.querySelector('.top-display');
+let displayValue = '0';
+let topDisplayValue = '';
+
+updateDisplay();
+
+
+function updateDisplay() {
+  display.textContent = displayValue;
+  topDisplay.textContent = topDisplayValue;
+}
 
 
 // change button styling on hover and click
@@ -78,8 +88,11 @@ function removeTransition(e) {
 // number buttons populate display
 numberBtns.forEach((button) => {
   const buttonHandler = () => {
+    if (displayValue === '0') {
+      displayValue = '';
+    };
     displayValue += button.id;
-    display.textContent = displayValue;
+    updateDisplay();
   }
   button.addEventListener('click', buttonHandler);
 });
@@ -87,15 +100,16 @@ numberBtns.forEach((button) => {
 
 // clear display
 clearBtn.addEventListener('click', () => {
-  displayValue = ''
-  display.textContent = displayValue;
+  displayValue = '0';
+  topDisplayValue = '';
+  updateDisplay();
 });
 
 
 // delete
 deleteBtn.addEventListener('click', () => {
   displayValue = displayValue.slice(0, displayValue.length - 1);
-  display.textContent = displayValue;
+  updateDisplay();
 })
 
 
@@ -106,7 +120,7 @@ posNegBtn.addEventListener('click', () => {
   } else {
     displayValue = '-' + displayValue;
   }
-  display.textContent = displayValue;
+  updateDisplay();
 });
 
 
@@ -121,21 +135,39 @@ decimalBtn.addEventListener('click', () => {
 })
 
 
+// add
+addBtn.addEventListener('click', () => {
+  topDisplayValue = displayValue + ' + ';
+  displayValue = '0';
+  updateDisplay();
+})
+
+
+equalsBtn.addEventListener('click', () => {
+  let topDisplayArray = topDisplayValue.split(' ');
+  let operator = topDisplayArray[1];
+  let a = parseInt(topDisplayArray[0]);
+  let b = parseInt(displayValue);
+  operate(operator, a, b);
+  updateDisplay();
+})
+
+
 
 function add(a, b) {
-  return a + b;
+  displayValue = a + b;
 }
 
 function subtract(a, b) {
-  return a - b;
+  displayValue = a - b;
 }
 
 function multiply(a, b) {
-  return a * b;
+  displayValue = a * b;
 }
 
 function divide(a, b) {
-  return a / b;
+  displayValue = a / b;
 }
 
 function operate(operator, a, b) {
