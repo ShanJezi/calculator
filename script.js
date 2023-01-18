@@ -160,17 +160,6 @@ operatorBtns.forEach((button) => {
 });
 
 
-// add
-// addBtn.addEventListener('click', () => {
-//   if (topDisplayValue && displayValue) {
-//     getAnswer();
-//   }
-//   topDisplayValue = displayValue + ' ' + addBtn.textContent + ' ';
-//   displayValue = '0';
-//   updateDisplay();
-// })
-
-
 function getAnswer() {
   let topDisplayArray = topDisplayValue.split(' ');
   let operator = topDisplayArray[1];
