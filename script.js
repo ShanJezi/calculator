@@ -87,9 +87,12 @@ numberBtns.forEach((button) => {
       topDisplayValue = '';
       displayValue = '';
       updateDisplay();
-    }
+    };
     if (displayValue === '0') {
       displayValue = '';
+    };
+    if (displayValue === '-0') {
+      displayValue = '-';
     };
     displayValue += button.id;
     updateDisplay();
@@ -190,8 +193,8 @@ function updateDisplay() {
     display.textContent = displayValue;
     topDisplay.textContent = topDisplayValue;
   }
-  console.log('display: ' + displayValue);
-  console.log('top display: ' + topDisplayValue);
+  console.log(`display: ${displayValue}  ${typeof displayValue}`);
+  console.log(`top display: ${topDisplayValue} ${typeof topDisplayValue}`);
 }
 
 
@@ -200,21 +203,21 @@ equalsBtn.addEventListener('click', getAnswer);
 
 
 function add(a, b) {
-  displayValue = (a + b).toString();
+  displayValue = parseFloat((a + b).toFixed(7)).toString();
 }
 
 function subtract(a, b) {
-  displayValue = (a - b).toString();
+  displayValue = parseFloat((a - b).toFixed(7)).toString();
 }
 
 function multiply(a, b) {
-  displayValue = (a * b).toString();
+  displayValue = parseFloat((a * b).toFixed(7)).toString();
 }
 
 function divide(a, b) {
   if (b === 0) {
     displayValue = undefined;
-  } else displayValue = Math.round((a / b) * (1000000)) / (1000000).toString();
+  } else displayValue = parseFloat((a / b).toFixed(7)).toString();
 }
 
 function operate(operator, a, b) {
