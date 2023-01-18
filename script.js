@@ -193,8 +193,8 @@ function updateDisplay() {
     display.textContent = displayValue;
     topDisplay.textContent = topDisplayValue;
   }
-  console.log(`display: ${displayValue}  ${typeof displayValue}`);
-  console.log(`top display: ${topDisplayValue} ${typeof topDisplayValue}`);
+  //console.log(`display: ${displayValue}  ${typeof displayValue}`);
+  //console.log(`top display: ${topDisplayValue} ${typeof topDisplayValue}`);
 }
 
 
