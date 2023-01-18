@@ -173,10 +173,14 @@ function getAnswer() {
   let operator = topDisplayArray[1];
   let a = parseFloat(topDisplayArray[0]);
   let b = parseFloat(displayValue);
-  operate(operator, a, b);
-  topDisplayValue = `${a} ${operator} ${b} =`;
+  if (!b || !a) {
+    displayValue = displayValue;
+  } else {
+    operate(operator, a, b);
+    topDisplayValue = `${a} ${operator} ${b} =`;
+  };
   updateDisplay();
-}
+};
 
 
 function updateDisplay() {
@@ -186,6 +190,8 @@ function updateDisplay() {
     display.textContent = displayValue;
     topDisplay.textContent = topDisplayValue;
   }
+  console.log('display: ' + displayValue);
+  console.log('top display: ' + topDisplayValue);
 }
 
 
@@ -208,7 +214,7 @@ function multiply(a, b) {
 function divide(a, b) {
   if (b === 0) {
     displayValue = undefined;
-  } else displayValue = (a / b).toString();
+  } else displayValue = Math.round((a / b) * (1000000)) / (1000000).toString();
 }
 
 function operate(operator, a, b) {
