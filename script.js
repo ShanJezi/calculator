@@ -139,10 +139,14 @@ operatorBtns.forEach((button) => {
       updateDisplay();
     } else if (topDisplayValue && displayValue) {
       getAnswer();
+      topDisplayValue = displayValue + ' ' + button.id + ' ';
+      displayValue = '0';
+      updateDisplay();
+    } else {
+      topDisplayValue = displayValue + ' ' + button.id + ' ';
+      displayValue = '0';
+      updateDisplay();
     }
-    topDisplayValue = displayValue + ' ' + button.id + ' ';
-    displayValue = '0';
-    updateDisplay();
   });
 });
 
@@ -173,7 +177,6 @@ function updateDisplay() {
   display.textContent = displayValue;
   topDisplay.textContent = topDisplayValue;
   console.log(displayValue);
-  console.log(topDisplayValue);
 }
 
 
@@ -182,19 +185,19 @@ equalsBtn.addEventListener('click', getAnswer);
 
 
 function add(a, b) {
-  displayValue = a + b;
+  displayValue = (a + b).toString();
 }
 
 function subtract(a, b) {
-  displayValue = a - b;
+  displayValue = (a - b).toString();
 }
 
 function multiply(a, b) {
-  displayValue = a * b;
+  displayValue = (a * b).toString();
 }
 
 function divide(a, b) {
-  displayValue = a / b;
+  displayValue = (a / b).toString();
 }
 
 function operate(operator, a, b) {
