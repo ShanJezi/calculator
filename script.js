@@ -83,6 +83,11 @@ function removeTransition(e) {
 // number buttons populate display
 numberBtns.forEach((button) => {
   const buttonHandler = () => {
+    if (topDisplayValue.includes('=')) {
+      topDisplayValue = '';
+      displayValue = '';
+      updateDisplay();
+    }
     if (displayValue === '0') {
       displayValue = '';
     };
@@ -132,7 +137,7 @@ decimalBtn.addEventListener('click', () => {
 
 
 operatorBtns.forEach((button) => {
-  button.addEventListener('click', () => {
+  const buttonHandler = () => {
     if (topDisplayValue.includes('=')) {
       topDisplayValue = displayValue + ' ' + button.id + ' ';
       displayValue = '0';
@@ -147,7 +152,8 @@ operatorBtns.forEach((button) => {
       displayValue = '0';
       updateDisplay();
     }
-  });
+  };
+  button.addEventListener('click', buttonHandler);
 });
 
 
@@ -174,9 +180,12 @@ function getAnswer() {
 
 
 function updateDisplay() {
-  display.textContent = displayValue;
-  topDisplay.textContent = topDisplayValue;
-  console.log(displayValue);
+  if (displayValue === undefined || topDisplayValue.includes('undefined')) {
+    display.textContent = "ERROR";
+  } else {
+    display.textContent = displayValue;
+    topDisplay.textContent = topDisplayValue;
+  }
 }
 
 
@@ -197,7 +206,9 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  displayValue = (a / b).toString();
+  if (b === 0) {
+    displayValue = undefined;
+  } else displayValue = (a / b).toString();
 }
 
 function operate(operator, a, b) {
