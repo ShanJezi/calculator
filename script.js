@@ -19,10 +19,10 @@ const posNegBtn = document.getElementById('-');
 
 const deleteBtn = document.getElementById('delete');
 const clearBtn = document.getElementById('clear');
-const multiplyBtn = document.getElementById('multiply');
-const divideBtn = document.getElementById('divide');
-const addBtn = document.getElementById('add');
-const subtractBtn = document.getElementById('subtract');
+const multiplyBtn = document.getElementById('*');
+const divideBtn = document.getElementById('/');
+const addBtn = document.getElementById('+');
+const subtractBtn = document.getElementById('-');
 const equalsBtn = document.getElementById('equals');
 
 const display = document.querySelector('.display');
@@ -31,12 +31,6 @@ let displayValue = '0';
 let topDisplayValue = '';
 
 updateDisplay();
-
-
-function updateDisplay() {
-  display.textContent = displayValue;
-  topDisplay.textContent = topDisplayValue;
-}
 
 
 // change button styling on hover and click
@@ -139,10 +133,14 @@ decimalBtn.addEventListener('click', () => {
 
 operatorBtns.forEach((button) => {
   button.addEventListener('click', () => {
-    if (topDisplayValue && displayValue) {
+    if (topDisplayValue.includes('=')) {
+      topDisplayValue = displayValue + ' ' + button.id + ' ';
+      displayValue = '0';
+      updateDisplay();
+    } else if (topDisplayValue && displayValue) {
       getAnswer();
     }
-    topDisplayValue = displayValue + ' ' + button.textContent + ' ';
+    topDisplayValue = displayValue + ' ' + button.id + ' ';
     displayValue = '0';
     updateDisplay();
   });
@@ -166,8 +164,18 @@ function getAnswer() {
   let a = parseFloat(topDisplayArray[0]);
   let b = parseFloat(displayValue);
   operate(operator, a, b);
+  topDisplayValue = `${a} ${operator} ${b} =`;
   updateDisplay();
 }
+
+
+function updateDisplay() {
+  display.textContent = displayValue;
+  topDisplay.textContent = topDisplayValue;
+  console.log(displayValue);
+  console.log(topDisplayValue);
+}
+
 
 equalsBtn.addEventListener('click', getAnswer);
 
