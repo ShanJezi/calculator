@@ -94,8 +94,12 @@ numberBtns.forEach((button) => {
     if (displayValue === '-0') {
       displayValue = '-';
     };
-    displayValue += button.id;
-    updateDisplay();
+    if (displayValue.length > 10) {
+      displayValue = displayValue;
+    } else {
+      displayValue += button.id;
+      updateDisplay();
+    }
   }
   button.addEventListener('click', buttonHandler);
 });
@@ -166,11 +170,9 @@ function getAnswer() {
   let a = parseFloat(topDisplayArray[0]);
   let b = parseFloat(displayValue);
   if (topDisplayValue.includes('=')) {
-    a = displayValue;
-    b = topDisplayArray[2];
+    a = parseFloat(displayValue);
+    b = parseFloat(topDisplayArray[2]);
     operate(operator, a, b);
-    console.log(a);
-    console.log(b);
     topDisplayValue = `${a} ${operator} ${b} =`;
   } else if (!b || !a) {
     displayValue = displayValue;
@@ -185,12 +187,16 @@ function getAnswer() {
 function updateDisplay() {
   if (displayValue === undefined || topDisplayValue.includes('undefined')) {
     display.textContent = "ERROR";
+  } else if (displayValue.length > 11) {
+    displayValue = parseFloat(displayValue).toExponential(5);
+    display.textContent = displayValue;
+    topDisplay.textContent = topDisplayValue;
   } else {
     display.textContent = displayValue;
     topDisplay.textContent = topDisplayValue;
   }
-  //console.log(`display: ${displayValue}  ${typeof displayValue}`);
-  //console.log(`top display: ${topDisplayValue} ${typeof topDisplayValue}`);
+  console.log(`display: ${displayValue}  ${typeof displayValue}`);
+  console.log(`top display: ${topDisplayValue} ${typeof topDisplayValue}`);
 }
 
 
