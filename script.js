@@ -94,7 +94,7 @@ numberBtns.forEach((button) => {
     if (displayValue === '-0') {
       displayValue = '-';
     };
-    if (displayValue.length > 10) {
+    if (displayValue.length > 9) {
       displayValue = displayValue;
     } else {
       displayValue += button.id;
@@ -142,7 +142,7 @@ decimalBtn.addEventListener('click', () => {
 })
 
 
-
+// operators
 operatorBtns.forEach((button) => {
   const buttonHandler = () => {
     if (topDisplayValue.includes('=')) {
@@ -187,7 +187,7 @@ function getAnswer() {
 function updateDisplay() {
   if (displayValue === undefined || topDisplayValue.includes('undefined')) {
     display.textContent = "ERROR";
-  } else if (displayValue.length > 11) {
+  } else if (displayValue.length > 10) {
     displayValue = parseFloat(displayValue).toExponential(5);
     display.textContent = displayValue;
     topDisplay.textContent = topDisplayValue;
@@ -195,15 +195,13 @@ function updateDisplay() {
     display.textContent = displayValue;
     topDisplay.textContent = topDisplayValue;
   }
-  console.log(`display: ${displayValue}  ${typeof displayValue}`);
-  console.log(`top display: ${topDisplayValue} ${typeof topDisplayValue}`);
 }
 
 
 equalsBtn.addEventListener('click', getAnswer);
 
 
-
+// math functions
 function add(a, b) {
   displayValue = parseFloat((a + b).toFixed(7)).toString();
 }
