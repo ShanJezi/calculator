@@ -165,7 +165,14 @@ function getAnswer() {
   let operator = topDisplayArray[1];
   let a = parseFloat(topDisplayArray[0]);
   let b = parseFloat(displayValue);
-  if (!b || !a) {
+  if (topDisplayValue.includes('=')) {
+    a = displayValue;
+    b = topDisplayArray[2];
+    operate(operator, a, b);
+    console.log(a);
+    console.log(b);
+    topDisplayValue = `${a} ${operator} ${b} =`;
+  } else if (!b || !a) {
     displayValue = displayValue;
   } else {
     operate(operator, a, b);
