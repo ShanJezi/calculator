@@ -4,15 +4,20 @@ html {
 
 body {
   height: 100vh;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-family: Roboto, sans-serif;
 }
 
 h1 {
-  color: rgb(44, 58, 77)
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 15vh;
+  color: rgb(44, 58, 77);
 }
 
 .calculator {
@@ -21,7 +26,7 @@ h1 {
   border-radius: 20px;
   width: 300px;
   padding: 20px;
-  margin-bottom: 25vh;
+  margin-bottom: 30vh;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -113,4 +118,13 @@ h1 {
 
 .del-clr-hover {
   background-color: rgb(150, 87, 87);
+}
+
+.footer {
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: rgb(44, 58, 77);
 }
