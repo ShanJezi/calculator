@@ -174,7 +174,7 @@ function getAnswer() {
     b = parseFloat(topDisplayArray[2]);
     operate(operator, a, b);
     topDisplayValue = `${a} ${operator} ${b} =`;
-  } else if (!b || !a) {
+  } else if (b === '' || a === '') {
     displayValue = displayValue;
   } else {
     operate(operator, a, b);
@@ -185,8 +185,10 @@ function getAnswer() {
 
 
 function updateDisplay() {
-  if (displayValue === undefined || topDisplayValue.includes('undefined')) {
+  if (displayValue === undefined) {
     display.textContent = "ERROR";
+  } else if (topDisplayValue.includes('undefined')) {
+    topDisplay.textContent = `${displayValue} = `;
   } else if (displayValue.length > 10) {
     displayValue = parseFloat(displayValue).toExponential(5);
     display.textContent = displayValue;
