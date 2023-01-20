@@ -169,7 +169,7 @@ function getAnswer() {
   let operator = topDisplayArray[1];
   let a = parseFloat(topDisplayArray[0]);
   let b = parseFloat(displayValue);
-  if (topDisplayValue.includes('=')) {
+  if (topDisplayValue.includes('=')) { // makes hitting equals button multiple times perform same operation to previous result
     a = parseFloat(displayValue);
     b = parseFloat(topDisplayArray[2]);
     operate(operator, a, b);
@@ -185,7 +185,7 @@ function getAnswer() {
 
 
 function updateDisplay() {
-  if (displayValue === undefined) {
+  if (displayValue === undefined) { // makes divide by zero return error
     display.textContent = "ERROR";
   } else if (topDisplayValue.includes('undefined')) {
     topDisplay.textContent = `${displayValue} = `;
